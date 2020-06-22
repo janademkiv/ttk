@@ -57,6 +57,7 @@ public class SpaceXClientServiceImpl implements SpaceXClientService {
         ResponseRequestEntity responseRequestEntity = new ResponseRequestEntity();
         responseRequestEntity.setRequest(rocketUrl);
         responseRequestEntity.setResponse(objectMapper.writeValueAsString(list));
+        responseRequestRepository.save(responseRequestEntity);
 
         return list.stream().map(RocketDto::getId).collect(Collectors.toList());
     }

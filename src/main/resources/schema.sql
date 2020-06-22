@@ -1,4 +1,4 @@
-create table req
+create table if not exists req
 (
     id       bigint not null
         constraint req_pkey

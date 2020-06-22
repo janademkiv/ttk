@@ -1,7 +1,7 @@
 package com.jdemkiv.ttk.restController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jdemkiv.ttk.dto.LaunchesDto;
-import com.jdemkiv.ttk.dto.RocketDto;
 import com.jdemkiv.ttk.service.SpaceXClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,18 +19,12 @@ public class SpaceXClientRestController {
     SpaceXClientServiceImpl spaceXClientService;
 
     @RequestMapping(value = "/template/rocketsId")
-    public List<Integer> getRocketsId() {
+    public List<Integer> getRocketsId() throws JsonProcessingException {
         return spaceXClientService.getRocketId();
     }
 
-    //добавить айдишник
-    //Получить по rocketId все возможные Launches.
-    //я получу все лаунчи, из этих лаунчей отфильтрую с нужным мне рокет айди в сервисе. выходит каждый раз получаю жирную джейсонину и в ней капашусь
     @RequestMapping(value = "/template/launches/{*}")
-    public LaunchesDto getLaunches(@PathVariable("*") int idLaunches) {
-        return spaceXClientService.getLaunchesById(idLaunches);
+    public List<LaunchesDto> getLaunches(@PathVariable("*") String idLaunches) throws JsonProcessingException {
+        return spaceXClientService.getAllLaunchesById(idLaunches);
     }
-
-
-
 }

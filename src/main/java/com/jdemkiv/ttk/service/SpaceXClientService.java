@@ -1,14 +1,13 @@
 package com.jdemkiv.ttk.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jdemkiv.ttk.dto.LaunchesDto;
-import com.jdemkiv.ttk.dto.RocketDto;
 
 import java.util.List;
 
 public interface SpaceXClientService {
 
+    List<Integer> getRocketId() throws JsonProcessingException;
 
-    List<Integer> getRocketId();
-
-    LaunchesDto getLaunchesById(int idLaunches);
+    List<LaunchesDto> getAllLaunchesById(String idLaunches) throws JsonProcessingException;
 }

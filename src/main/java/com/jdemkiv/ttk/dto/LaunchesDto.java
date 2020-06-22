@@ -10,4 +10,6 @@ public class LaunchesDto {
     @JsonProperty("launch_year")
     String launchYear;
     LinksDto links;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY, value = "rocket")
+    RocketLaunchDto rocketLaunchDto;
 }
